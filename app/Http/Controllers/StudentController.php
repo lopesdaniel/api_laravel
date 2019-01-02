@@ -62,7 +62,22 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+
+        if(!$student){
+            return response()->json(['message' => 'Não encontrado'], Response::HTTP_NOT_FOUND);
+        }
+
+        
+        try {
+            $student->update($request->all());
+            return [];
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     /**
