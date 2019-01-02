@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class StudentController extends Controller
 {
@@ -14,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::get();
+        return response()->json(Student::get(), Response::HTTP_OK);
     }
 
     /**
@@ -25,7 +26,15 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try {
+            return Student::create($request->all());
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => $th->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     /**
@@ -36,7 +45,12 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        if($student){
+            return response()->json($student, Response::HTTP_FOUND);
+        }
+
+        return response()->json(['message' => 'Não encontrado'], Response::HTTP_NOT_FOUND);
     }
 
     /**
