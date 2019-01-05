@@ -26,15 +26,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-
-        try {
-            return Student::create($request->all());
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => $th->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-
+        return Student::create($request->all());
     }
 
     /**
@@ -58,14 +50,9 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        try {
+        
             $student->update($request->all());
             return [];
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => $th->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
 
     }
 
@@ -77,14 +64,9 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        try {
             $student->delete();
             
             return [];
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        
     }
 }
