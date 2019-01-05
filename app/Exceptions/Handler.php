@@ -3,10 +3,14 @@
 namespace App\Exceptions;
 
 use Exception;
+use App\Exceptions\Traits\ApiException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
+
+    use ApiException;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -46,6 +50,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($request->is('api/*')){
+            return $this->getJsonException($request, $exception);
+        }
+
         return parent::render($request, $exception);
     }
 }
