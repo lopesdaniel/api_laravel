@@ -2,9 +2,8 @@
 
 # API Escola
 
-Projeto de API do curso de Laravel do TreinaWeb [Link do curso] (https://www.treinaweb.com.br/curso/laravel-desenvolvimento-de-apis-rest)  
-
-![](https://img.shields.io/codacy/coverage/:projectId/:branch.svg?style=flat-square)
+Projeto de API do curso de Laravel do TreinaWeb
+(https://www.treinaweb.com.br/curso/laravel-desenvolvimento-de-apis-rest)  
 
 - Boas práticas para desenvolvimento de APIs REST no Laravel.
 - CRUD de Estudantes e Classes.
