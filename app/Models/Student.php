@@ -11,20 +11,20 @@ class Student extends Model
      */
     protected $fillable = ['name', 'birth', 'gender', 'classroom_id'];
 
-    /**
-     * Formatação da data de nascimento (Ocorre na hora de serialização)
-     */
-    protected $casts = [
-        'birth' => 'date:d/m/Y'
-    ];
+    // /**
+    //  * Formatação da data de nascimento (Ocorre na hora de serialização)
+    //  */
+    // protected $casts = [
+    //     'birth' => 'date:d/m/Y'
+    // ];
 
-    /**
-     * Define os atributos a não serem mostrados após a serialização
-     */
-    protected $hidden = [
-        'created_at',
-        'updated_at'
-    ];
+    // /**
+    //  * Define os atributos a não serem mostrados após a serialização
+    //  */
+    // protected $hidden = [
+    //     'created_at',
+    //     'updated_at'
+    // ];
 
     /**
      * 
